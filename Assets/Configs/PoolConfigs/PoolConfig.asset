@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ef77df5b259124fa9ed17ff6ba0281, type: 3}
   m_Name: PoolConfig
   m_EditorClassIdentifier: 
-  poolItems: []
+  poolItems:
+  - typeAndNamespace: CharacterSphereController
+    poolItemName: CharacterSphere
+    prefab: {fileID: 3694090665488750605, guid: aac692e2e2d095945b0a7a237e65dcbb, type: 3}
+    listenerCallback: 1
+    toPreloadAmount: 1
