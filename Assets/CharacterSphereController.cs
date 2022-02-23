@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class CharacterSphereController : MonoBehaviour, IPoolInit, IPoolOnSpawn, IPoolOnDespawn
 {
-    [SerializeField] private Rigidbody characterRigidbody;
     [SerializeField] private float moveSpeed;
+    Rigidbody characterRigidbody;
+    //public GameObject popUpBox;
+    
     
     // Update is called once per frame
+
+    void Awake()
+    {
+
+    
+    }
+    
+    void Start()
+    {
+        characterRigidbody = GameObject.Find("CharacterSphere(Clone)").GetComponent<Rigidbody>();
+    }
+
+
     void Update()
     {
         var netForce = Vector3.zero;
@@ -35,8 +50,10 @@ public class CharacterSphereController : MonoBehaviour, IPoolInit, IPoolOnSpawn,
         {
             netForce = Vector3.zero;
         }
-        
-        characterRigidbody.AddForce(netForce);
+
+        if (characterRigidbody != null){
+            characterRigidbody.AddForce(netForce);
+        }
     }
 
     public void Init()
@@ -53,4 +70,39 @@ public class CharacterSphereController : MonoBehaviour, IPoolInit, IPoolOnSpawn,
     {
         Debug.Log("Character Despawned");
     }
+
+   
+   
+   
+   void OnCollisionStay(Collision col)
+    {
+        
+        
+            PopUpSystem pop = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PopUpSystem>();
+            if(col.gameObject.tag== "wall1")
+            {
+                
+                pop.PopUp(1);
+            }
+            if(col.gameObject.tag== "wall2")
+            {
+                
+                pop.PopUp(2);
+            }
+            if(col.gameObject.tag== "wall3")
+            {
+                
+                pop.PopUp(3);
+            }
+            if(col.gameObject.tag== "wall4")
+            {
+                        
+                pop.PopUp(4);
+            }
+        
+
+    }
+
+
+    
 }

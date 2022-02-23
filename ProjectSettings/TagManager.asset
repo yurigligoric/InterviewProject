@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GameManager
+  - wall1
+  - wall2
+  - wall3
+  - wall4
+  - PopUpLocation
   layers:
   - Default
   - TransparentFX
